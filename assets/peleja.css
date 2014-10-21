@@ -41,6 +41,10 @@
   width: 50px;
 }
 
+.attribute input.name {
+  width: 170px;
+}
+
 .modifier input {
   width: 35px;
 }

@@ -1,13 +1,16 @@
 <div class='character'>
-  <label name="name">Name</label>
-  <input name="name" type="text" class="name" ng-model="character.name"/>
-  <br>
-  <br>
+  <div class='attribute'>
+    <label name="name">Name</label>
+    <input name="name" type="text" class="name" ng-model="character.name"/>
+  </div>
 
   <div class='attribute'>
     <label name="init">Init</label>
     <input name="init" type="number" class="init" ng-model="character.initiative"/>
   </div>
+
+  <br>
+  <br>
 
   <div class='attribute'>
     <label name="ac">AC</label>
@@ -19,13 +22,44 @@
     <input name="hp" type="number" class="hp"   ng-model="character.hp"/>
   </div>
 
-  <div class='attribute'>
-    <label name="XP">XP</label>
-    <input name="xp" type="number" class="xp"   ng-model="character.xp"/>
-  </div>
+  <br>
+  <br>
+
+  Ataques
+  <ul class="attacks">
+    <li ng-repeat="attack in character.attacks">
+      <div class='modifier attack-name'>
+        <label name="name">Name</label>
+        <input name="name" type="text" ng-model="attack.name"
+        class="attack-name"/>
+      </div>
+      <div class='modifier'>
+        <label name="bonus">Bonus</label>
+        <input name="bonus" type="text" ng-model="attack.bonus"/>
+      </div>
+      <div class='modifier dmg'>
+        <label name="dmg">Dmg</label>
+        <input name="dmg" type="text" ng-model="attack.dmg"/>
+      </div>
+      <div class='modifier kind' ng-show="attack.kind != '' &&
+        attack.kind != undefined">
+        <label name="kind">Kind</label>
+        <input name="kind" type="text" ng-model="attack.kind"/>
+      </div>
+      <div class='modifier range' ng-show="attack.range != '' &&
+        attack.range != undefined">
+        <label name="range">Range</label>
+        <input name="range" type="text" ng-model="attack.range"/>
+      </div>
+      <div class='modifier special' ng-show="attack.special != '' &&
+        attack.special != undefined">
+        <textarea name="special" type="text" ng-model="attack.special"/>
+      </div>
+    </li>
+  </ul>
 
   <br>
-  <br>
+
 
   Passives
   <br>
@@ -84,39 +118,6 @@
   <br>
   <br>
 
-  Ataques
-  <ul class="attacks">
-    <li ng-repeat="attack in character.attacks">
-      <div class='modifier attack-name'>
-        <label name="name">Name</label>
-        <input name="name" type="text" ng-model="attack.name"
-        class="attack-name"/>
-      </div>
-      <div class='modifier'>
-        <label name="bonus">Bonus</label>
-        <input name="bonus" type="text" ng-model="attack.bonus"/>
-      </div>
-      <div class='modifier dmg'>
-        <label name="dmg">Dmg</label>
-        <input name="dmg" type="text" ng-model="attack.dmg"/>
-      </div>
-      <div class='modifier kind' ng-show="attack.kind != '' &&
-        attack.kind != undefined">
-        <label name="kind">Kind</label>
-        <input name="kind" type="text" ng-model="attack.kind"/>
-      </div>
-      <div class='modifier range' ng-show="attack.range != '' &&
-        attack.range != undefined">
-        <label name="range">Range</label>
-        <input name="range" type="text" ng-model="attack.range"/>
-      </div>
-      <div class='modifier special' ng-show="attack.special != '' &&
-        attack.special != undefined">
-        <textarea name="special" type="text" ng-model="attack.special"/>
-      </div>
-    </li>
-  </ul>
-
   <div class="traits-container" ng-show="character.traits.length > 0">
     <span>Traits</span>
     <ul class="attacks">
@@ -125,7 +126,6 @@
         <textarea name="text" type="text" ng-model="trait.text" rows="4" class="trait-text"/>
       </li>
     </ul>
-    <br>
   </div>
 
   <div class="languages-container" ng-show="character.languages.length > 0">
@@ -167,4 +167,11 @@
       ng-model="character.vulnerabilites"/>
     </div>
   </div>
+
+  <br>
+  <div class='attribute'>
+    <label name="XP">XP</label>
+    <input name="xp" type="number" class="xp"   ng-model="character.xp"/>
+  </div>
+
 </div>
