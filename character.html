@@ -1,4 +1,4 @@
-<div class='character'>
+<form class='character'>
   <div class='attribute'>
     <label name="name">Name</label>
     <input name="name" type="text" class="name" ng-model="character.name"/>
@@ -25,41 +25,32 @@
   <br>
   <br>
 
-  Ataques
+  <span>Ataques</span>
   <ul class="attacks">
     <li ng-repeat="attack in character.attacks">
-      <div class='modifier attack-name'>
-        <label name="name">Name</label>
-        <input name="name" type="text" ng-model="attack.name"
-        class="attack-name"/>
-      </div>
-      <div class='modifier'>
-        <label name="bonus">Bonus</label>
-        <input name="bonus" type="text" ng-model="attack.bonus"/>
-      </div>
-      <div class='modifier dmg'>
-        <label name="dmg">Dmg</label>
-        <input name="dmg" type="text" ng-model="attack.dmg"/>
-      </div>
-      <div class='modifier kind' ng-show="attack.kind != '' &&
-        attack.kind != undefined">
-        <label name="kind">Kind</label>
-        <input name="kind" type="text" ng-model="attack.kind"/>
-      </div>
-      <div class='modifier range' ng-show="attack.range != '' &&
-        attack.range != undefined">
-        <label name="range">Range</label>
-        <input name="range" type="text" ng-model="attack.range"/>
-      </div>
-      <div class='modifier special' ng-show="attack.special != '' &&
-        attack.special != undefined">
-        <textarea name="special" type="text" ng-model="attack.special"/>
-      </div>
+      <input name="name" type="text" ng-model="attack.name" class="attack-name"/>
+      <input name="bonus" type="text" ng-model="attack.bonus" class="bonus"/>
+      <input name="dmg" type="text" ng-model="attack.dmg" class="dmg"/>
+      <input name="kind" type="text" ng-model="attack.kind" class="kind"
+      ng-show="attack.kind.length > 0"/>
+      <input name="range" type="text" ng-model="attack.range" class="range"
+      ng-show="attack.range.length > 0"/>
+      <input name="special" type="text" ng-model="attack.special" class="special" 
+      ng-show="attack.special.length > 0"/>
     </li>
   </ul>
 
   <br>
 
+  <div class="skills-container" ng-show="character.skills.length > 0">
+    <span>Skills</span>
+    <ul class="skills">
+      <li class="skill" ng-repeat="skill in character.skills">
+        <input name="name" type="text" ng-model="skill.name"/>
+        <input name="value" type="text" ng-model="skill.value" />
+      </li>
+    </ul>
+  </div>
 
   Passives
   <br>
@@ -174,4 +165,4 @@
     <input name="xp" type="number" class="xp"   ng-model="character.xp"/>
   </div>
 
-</div>
+</form>

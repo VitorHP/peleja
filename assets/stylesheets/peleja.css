@@ -1,4 +1,10 @@
 
+button.unstyled {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .combatants {
   border: 1px solid;
   padding: 10px;
@@ -49,21 +55,42 @@
   width: 35px;
 }
 
-.attacks {
+.attacks, .skills {
   list-style: none;
   padding-left: 0px;
 }
 
-.modifier.attack-name input {
-  width: 100px;
+.skill {
+  display: inline-block;
 }
 
-.modifier.dmg input {
+.skill input {
+  width: 70px;
+  display: block;
+}
+
+.attack-name {
+  width: 120px;
+}
+
+.bonus {
+  width: 35px;
+}
+
+.dmg {
   width: 70px;
 }
 
-.modifier.special{
-  display: block;
+.kind {
+  width: 70px;
+}
+
+.range { 
+  width: 70px;
+}
+
+.special {
+  width: 170px;
 }
 
 .modifier.trait-name {
@@ -78,6 +105,10 @@
   width: 225px;
 }
 
-.attribute.languages input{
-  width: 200px;
+.attribute.languages input, 
+.attribute.resistances input, 
+.attribute.immunities input, 
+.attribute.vulnerabilites input{
+  width: 220px;
 }
+

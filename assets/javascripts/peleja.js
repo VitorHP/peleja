@@ -6,6 +6,7 @@ app = angular.module('Peleja', [])
 
 app.service('BattleService', function(){
   combatants = [];
+  monsters = {};
   turnCount = 0;
   combatantSequence = 0;
 
@@ -18,6 +19,12 @@ app.service('BattleService', function(){
       newCombatant = combatant
     } else {
       newCombatant    = jQuery.extend({}, combatant);
+      if (monsters[newCombatant.name] > 0) {
+        monsters[newCombatant.name] += 1
+      } else {
+        monsters[newCombatant.name] = 1
+      }
+      newCombatant.name = newCombatant.name + ' ' + monsters[newCombatant.name]
     }
     newCombatant.id = combatantSequence;
     combatantSequence += 1;
@@ -31,6 +38,7 @@ app.service('BattleService', function(){
 
   this.clear = function(){
     combatants.length = 0;
+    monsters = {};
   }
 
   this.sortCombatantsByInitiative = function(){
@@ -268,13 +276,18 @@ app.service('CharacterService', function(){
       ac: 17,
       xp: 1100,
       modifiers: {
-        str: 4,
+        str: 6,
         dex: 1,
-        con: 3,
+        con: 5,
         int: 0,
         wis: 2,
         cha: 1
       },
+      skills: [
+        { name: 'athletics',    value: 6 },
+        { name: 'intimidation', value: 3 },
+        { name: 'perception',   value: 4 }
+      ],
       attacks: [
         { name: 'Multiattack (GreatSword ou Spear)', dmg: '', bonus: 0 },
         { name: 'GreatSword', dmg: '2d6+4', bonus: 6 },
@@ -313,6 +326,48 @@ app.service('CharacterService', function(){
     }
   ];
 
+  this.newCharacter = function(){
+    return { 
+      type: "npc",
+      name: "",
+      hp: 0,
+      initiative: 0,
+      ac: 0,
+      xp: 0,
+      modifiers: {
+        str: 0,
+        dex: 0,
+        con: 0,
+        int: 0,
+        wis: 0,
+        cha: 0
+      },
+      attacks: [
+        { name: 'attack 1', dmg: '', bonus: 0 },
+        { name: 'attack 2', dmg: '', bonus: 0 },
+        { name: 'attack 3', dmg: '', bonus: 0 }
+      ],
+      languages: [],
+      passives: {
+        insight: 0,
+        perception: 0,
+      },
+      skills: [
+        { name: 'skill 1',    value: 0 },
+        { name: 'skill 2',    value: 0 },
+        { name: 'skill 3',    value: 0 },
+      ],
+      traits: [
+        { name: 'trait 1', text: '' },
+        { name: 'trait 2', text: '' },
+        { name: 'trait 3', text: '' },
+      ],
+      resistances: [''],
+      immunities: [''],
+      vulnerabilites: ['']
+    }
+  }
+
   this.all = function(){
     return characters;
   }
@@ -344,7 +399,7 @@ app.directive('character', function(){
 });
 
 app.controller('CharactersController', ['$scope', 'CharacterService', 'BattleService', function($scope, CharacterService, BattleService){
-  $scope.newCharacter = {};
+  $scope.character = CharacterService.newCharacter();
 
   $scope.combatants = BattleService.allCombatants();
 
@@ -360,8 +415,8 @@ app.controller('CharactersController', ['$scope', 'CharacterService', 'BattleSer
   }
 
   $scope.createCharacter = function(){
-    CharacterService.add($scope.newCharacter);
-    $scope.newCharacter = {};
+    BattleService.addCombatant($scope.character);
+    $scope.character = CharacterService.newCharacter();
   }
 
   $scope.addToBattle = function(character){
