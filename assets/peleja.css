@@ -1,0 +1,79 @@
+
+.combatants {
+  border: 1px solid;
+  padding: 10px;
+  min-height: 350px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.combatants li {
+  display: inline-block;
+  list-style: none;
+  vertical-align: top;
+}
+
+.character-list {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.character-list li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.character {
+  border: 1px solid;
+  border: 1px solid;
+  width: 275px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 0 5px;
+}
+
+.attribute, .modifier {
+  display: inline-block;
+}
+
+.attribute input, .modifier input {
+  display: block;
+  width: 50px;
+}
+
+.modifier input {
+  width: 35px;
+}
+
+.attacks {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.modifier.attack-name input {
+  width: 100px;
+}
+
+.modifier.dmg input {
+  width: 70px;
+}
+
+.modifier.special{
+  display: block;
+}
+
+.modifier.trait-name {
+  display: block;
+}
+
+.modifier.trait-name input {
+  width: 225px;
+}
+
+.trait-text {
+  width: 225px;
+}
+
+.attribute.languages input{
+  width: 200px;
+}

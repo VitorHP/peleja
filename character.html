@@ -1,0 +1,170 @@
+<div class='character'>
+  <label name="name">Name</label>
+  <input name="name" type="text" class="name" ng-model="character.name"/>
+  <br>
+  <br>
+
+  <div class='attribute'>
+    <label name="init">Init</label>
+    <input name="init" type="number" class="init" ng-model="character.initiative"/>
+  </div>
+
+  <div class='attribute'>
+    <label name="ac">AC</label>
+    <input name="ac" type="number" class="ac"   ng-model="character.ac"/>
+  </div>
+
+  <div class='attribute'>
+    <label name="HP">HP</label>
+    <input name="hp" type="number" class="hp"   ng-model="character.hp"/>
+  </div>
+
+  <div class='attribute'>
+    <label name="XP">XP</label>
+    <input name="xp" type="number" class="xp"   ng-model="character.xp"/>
+  </div>
+
+  <br>
+  <br>
+
+  Passives
+  <br>
+
+  <div class='attribute passive'>
+    <label name="insight">Insight</label>
+    <input name="insight" type="number" class="insight"
+    ng-model="character.passives.insight"/>
+  </div>
+
+  <div class='attribute passive'>
+    <label name="perception">Perception</label>
+    <input name="perception" type="number" class="perception"
+    ng-model="character.passives.perception"/>
+  </div>
+
+  <br>
+  <br>
+
+  <div class='modifier'>
+    <label name="str">STR</label>
+    <input name="str" type="number" class="str"
+    ng-model="character.modifiers.str"/>
+  </div>
+
+  <div class='modifier'>
+    <label name="dex">DEX</label>
+    <input name="dex" type="number" class="dex"
+    ng-model="character.modifiers.dex"/>
+  </div>
+
+  <div class='modifier'>
+    <label name="int">INT</label>
+    <input name="int" type="number" class="int"
+    ng-model="character.modifiers.int"/>
+  </div>
+
+  <div class='modifier'>
+    <label name="con">CON</label>
+    <input name="con" type="number" class="con"
+    ng-model="character.modifiers.con"/>
+  </div>
+
+  <div class='modifier'>
+    <label name="wis">WIS</label>
+    <input name="wis" type="number" class="wis"
+    ng-model="character.modifiers.wis"/>
+  </div>
+
+  <div class='modifier'>
+    <label name="cha">CHA</label>
+    <input name="cha" type="number" class="cha"
+    ng-model="character.modifiers.cha"/>
+  </div>
+
+  <br>
+  <br>
+
+  Ataques
+  <ul class="attacks">
+    <li ng-repeat="attack in character.attacks">
+      <div class='modifier attack-name'>
+        <label name="name">Name</label>
+        <input name="name" type="text" ng-model="attack.name"
+        class="attack-name"/>
+      </div>
+      <div class='modifier'>
+        <label name="bonus">Bonus</label>
+        <input name="bonus" type="text" ng-model="attack.bonus"/>
+      </div>
+      <div class='modifier dmg'>
+        <label name="dmg">Dmg</label>
+        <input name="dmg" type="text" ng-model="attack.dmg"/>
+      </div>
+      <div class='modifier kind' ng-show="attack.kind != '' &&
+        attack.kind != undefined">
+        <label name="kind">Kind</label>
+        <input name="kind" type="text" ng-model="attack.kind"/>
+      </div>
+      <div class='modifier range' ng-show="attack.range != '' &&
+        attack.range != undefined">
+        <label name="range">Range</label>
+        <input name="range" type="text" ng-model="attack.range"/>
+      </div>
+      <div class='modifier special' ng-show="attack.special != '' &&
+        attack.special != undefined">
+        <textarea name="special" type="text" ng-model="attack.special"/>
+      </div>
+    </li>
+  </ul>
+
+  <div class="traits-container" ng-show="character.traits.length > 0">
+    <span>Traits</span>
+    <ul class="attacks">
+      <li ng-repeat="trait in character.traits">
+        <input name="name" type="text" ng-model="trait.name"/>
+        <textarea name="text" type="text" ng-model="trait.text" rows="4" class="trait-text"/>
+      </li>
+    </ul>
+    <br>
+  </div>
+
+  <div class="languages-container" ng-show="character.languages.length > 0">
+    <span >Languages</span>
+    <br>
+
+    <div class='attribute languages'>
+      <input name="cha" type="text" class="cha"
+      ng-model="character.languages"/>
+    </div>
+  </div>
+
+  <div class="resistances-container" ng-show="character.resistances.length > 0">
+    <span >Resistances</span>
+    <br>
+
+    <div class='attribute resistances'>
+      <input name="cha" type="text" class="cha"
+      ng-model="character.resistances"/>
+    </div>
+  </div>
+
+  <div class="immunities-container" ng-show="character.immunities.length > 0">
+    <span >Immunities</span>
+    <br>
+
+    <div class='attribute immunities'>
+      <input name="cha" type="text" class="cha"
+      ng-model="character.immunities"/>
+    </div>
+  </div>
+
+  <div class="vulnerabilites-container" ng-show="character.vulnerabilites.length > 0">
+    <span >Vulnerabilites</span>
+    <br>
+
+    <div class='attribute vulnerabilites'>
+      <input name="cha" type="text" class="cha"
+      ng-model="character.vulnerabilites"/>
+    </div>
+  </div>
+</div>

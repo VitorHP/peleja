@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Peleja</title>
+    <link type="text/css" rel="stylesheet" href="assets/peleja.css">
+  </head>
+
+  <body>
+    <div ng-app="Peleja">
+      <div ng-controller="CharactersController" >
+
+        <button ng-click="startBattle()">Start Battle</button>
+        <button ng-click="nextTurn()">NextTurn</button>
+        <button ng-click="clear()">Clear</button>
+        <button ng-click="reorder()">Reorder</button>
+
+        <ul class="combatants">
+          <li ng-repeat="character in combatants track by character.id" ng-class="{ active: character.active }">
+            <character></character>
+
+            <button ng-click="removeFromBattle(character)">Remove</button>
+          </li>
+        </ul>
+
+        <div class="character-list new-character">
+          New Character
+          <form>
+            <character></character>
+            <button ng-click="addToBattle(character)">Add Character</button>
+          </form>
+        </div>
+
+        <div class="character-list pcs">
+          PCS
+          <ul class="pcs">
+            <li ng-repeat="character in pcs" ng-class="{ active: character.active }">
+              <character></character>
+              <button ng-click="addToBattle(character)">Add</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="character-list npcs">
+          Monstros
+          <ul class="npcs">
+            <li ng-repeat="character in npcs">
+              <character></character>
+              <button ng-click="addToBattle(character)">Add</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/ng-template" id="character.html">
+      <p>Ahoy</p>
+    </script>
+    <script src="assets/lib/jquery-1.11.1.js"></script>
+    <script src="assets/lib/angular.js"></script>
+    <script src="assets/peleja.js"></script>
+  </body>
+</html>
